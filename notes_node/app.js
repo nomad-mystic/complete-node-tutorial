@@ -9,12 +9,19 @@ const notes = require('./notes');
 const command = process.argv[2];
 const argv = yargs.argv;
 
-console.log(`Command: ${command}`);
+// console.log(`Command: ${command}`);
 // console.log(process.argv);
-console.log(argv);
+// console.log(argv);
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+
+    if (Array.isArray(note)) {
+        console.log(`A note was created: \n ${note.title} \n ${note.body}`);
+    } else {
+        console.log(note);
+    }
+
 } else if (command === 'list') {
     notes.getAll();
 } else if ('remove' === command) {

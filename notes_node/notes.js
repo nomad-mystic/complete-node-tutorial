@@ -1,25 +1,24 @@
-const fs = require('fs');
+// const fs = require('fs');
+
+const notesUtilities = require('./utilities/note.utilities');
 
 const addNote = (title, body) => {
-    let notes = [];
     let note = {
         title,
         body,
     };
 
-    try {
-        // read the notes in the file
-        let notesString = fs.readFileSync('notes.data.json');
-        notes = JSON.parse(notesString);
-    } catch (e) {
-        console.log(e);
-    }
+    // read the notes in the file
+    let notes = notesUtilities.fetchNotes();
 
     let duplicateNotes = notes.filter((note) => note.title === title);
 
     if (duplicateNotes.length === 0) {
         notes.push(note);
-        fs.writeFileSync('notes.data.json', JSON.stringify(notes));
+        notesUtilities.saveNotes(notes);
+        return note;
+    } else {
+        return 'Duplicate note found';
     }
 };
 
