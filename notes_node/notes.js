@@ -27,8 +27,11 @@ const getAll = () => {
 };
 
 const removeNote = (title) => {
-    console.log(`${title}`);
-    return 'note removed';
+    let notes = notesUtilities.fetchNotes();
+    let filteredNotes = notes.filter((note) => note.title !== title);
+    notesUtilities.saveNotes(filteredNotes);
+
+    return (notes.length === filteredNotes.length) ? 'No Note was removed.' : `Note with title: ${title} was removed.`;
 };
 
 const getNote = (title) => {

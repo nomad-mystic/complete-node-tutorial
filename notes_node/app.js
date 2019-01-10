@@ -21,11 +21,11 @@ if (command === 'add') {
     } else {
         console.log(note);
     }
-
 } else if (command === 'list') {
     notes.getAll();
 } else if ('remove' === command) {
-    notes.removeNote(argv.title);
+    let message = notes.removeNote(argv.title);
+    console.log(message);
 } else if ('read' === command) {
     notes.getNote(argv.title);
 } else {
