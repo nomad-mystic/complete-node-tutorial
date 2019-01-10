@@ -7,12 +7,20 @@ const addNote = (title, body) => {
         body,
     };
 
-    notes.push(note);
-    fs.writeFileSync('notes.data.json', JSON.stringify(notes));
+    try {
+        // read the notes in the file
+        let notesString = fs.readFileSync('notes.data.json');
+        notes = JSON.parse(notesString);
+    } catch (e) {
+        console.log(e);
+    }
 
+    let duplicateNotes = notes.filter((note) => note.title === title);
 
-    // console.log(`${title}: \n ${body}`);
-    // return `${title}: \n ${body}`;
+    if (duplicateNotes.length === 0) {
+        notes.push(note);
+        fs.writeFileSync('notes.data.json', JSON.stringify(notes));
+    }
 };
 
 const getAll = () => {
