@@ -12,7 +12,7 @@ const removeNote = (title) => {
     return 'note removed';
 };
 
-const readNote = (title) => {
+const getNote = (title) => {
     console.log(`${title}`);
     return 'Read Note';
 };
@@ -21,5 +21,5 @@ module.exports = {
     addNote,
     getAll,
     removeNote,
-    readNote,
+    getNote,
 };

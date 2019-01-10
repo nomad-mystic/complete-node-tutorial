@@ -13,7 +13,6 @@ console.log(`Command: ${command}`);
 // console.log(process.argv);
 console.log(argv);
 
-
 if (command === 'add') {
     notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
@@ -21,7 +20,7 @@ if (command === 'add') {
 } else if ('remove' === command) {
     notes.removeNote(argv.title);
 } else if ('read' === command) {
-    notes.readNote(argv.title)
+    notes.getNote(argv.title);
 } else {
     console.log('No command recognized');
 }
