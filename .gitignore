@@ -1,4 +1,4 @@
-.idea/
+.idea
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Windows template
@@ -203,3 +203,5 @@ Temporary Items
 .apdisk
 
 /notes_node/node_modules/
+
+weather_app/config/keys.js

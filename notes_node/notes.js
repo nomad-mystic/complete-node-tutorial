@@ -1,5 +1,3 @@
-// const fs = require('fs');
-
 const notesUtilities = require('./utilities/note.utilities');
 
 const addNote = (title, body) => {
@@ -35,8 +33,10 @@ const removeNote = (title) => {
 };
 
 const getNote = (title) => {
-    console.log(`${title}`);
-    return 'Read Note';
+    let notes = notesUtilities.fetchNotes();
+    let filteredNote = notes.filter((note) => note.title === title);
+
+    return (filteredNote.length > 0) ? filteredNote : 'No Note was Found with that Title!';
 };
 
 module.exports = {
