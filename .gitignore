@@ -1,4 +1,4 @@
-.idea
+.idea/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Windows template
@@ -202,6 +202,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/notes_node/node_modules/
+notes_node/node_modules/
+weather_app/node_modules/
 
 weather_app/config/keys.js
