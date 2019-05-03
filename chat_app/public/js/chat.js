@@ -1,13 +1,20 @@
 // Init socket.io
 const socket = io();
 
-socket.on('countUpdated', (count) => {
-	console.log(count);
+// DOM elements
+const welcomeEl = window.document.getElementById('welcome');
+const userInputText = window.document.getElementById('user-input-text');
+const userMessage = window.document.getElementById('user-message');
+const userMessageSubmit = window.document.getElementById('user-message-submit');
+
+socket.on('welcome', (welcomeMessage) => {
+	welcomeEl.innerText = welcomeMessage;
 });
 
-const incrementButton = window.document.getElementById('increment');
-
-incrementButton.addEventListener('click', (event) => {
-	socket.emit('increment');
+userMessageSubmit.addEventListener('click', (event) => {
+	socket.emit('sendMessage', userMessage.value);
 });
 
+socket.on('getMessage', (message) => {
+	userInputText.innerText = message;
+});

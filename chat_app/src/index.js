@@ -13,21 +13,16 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
 app.use(express.urlencoded());
 
-let count = 0;
 io.on('connection', (socket) => {
 	console.log('New Web Socket connection');
-	// Initial
-	socket.emit('countUpdated', count);
 
-	// From the Client
-	socket.on('increment', () => {
-		count++;
+	const clientWelcomeMessage = 'Welcome!';
 
-		// Just one Connect
-		// socket.emit('countUpdated', count);
+	socket.emit('welcome', clientWelcomeMessage);
 
-		// every connection
-		io.emit('countUpdated', count);
+	// get user message to all users
+	socket.on('sendMessage', (message) => {
+		io.emit('getMessage', message);
 	});
 });
 
